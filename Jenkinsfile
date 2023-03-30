@@ -21,7 +21,7 @@ pipeline {
                 docker.image('citools-isis2603:latest').inside('-u root') {
                    sh '''
                       npm i -s
-                      nest build
+                      npm run build
                    '''
                 }
              }
@@ -32,7 +32,7 @@ pipeline {
              script {
                 docker.image('citools-isis2603:latest').inside('-u root') {
                    sh '''
-                      npm run test:cov
+                      CI=true npm test
                    '''
                 }
              }
