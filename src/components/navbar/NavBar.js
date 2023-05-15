@@ -5,11 +5,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+
 function NavScrollExample() {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Container fluid>
+      <Container flex-fill>
         <Navbar.Brand href="#">
           <b>ECOWEB</b>
           </Navbar.Brand>

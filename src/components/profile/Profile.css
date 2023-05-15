@@ -1,0 +1,6 @@
+.with-vertical-line .vertical-line{
+    border-right: 2px solid #ccc;
+}
+.container {
+    max-width: 100%;
+}
