@@ -41,6 +41,15 @@ function ConfProfile(){
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Fecha de nacimiento</Form.Label>
                     </Form.Group>
+                    <div class="col-4">
+                        <Form.Control type="text" placeholder="DD" readOnly />
+                    </div>
+                    <div class="col-4">
+                        <Form.Control type="text" placeholder="MM" readOnly />
+                    </div>
+                    <div class="col-4">
+                        <Form.Control type="text" placeholder="AAAA" readOnly />
+                    </div>
                 </div>    
             </div>
         </div>
