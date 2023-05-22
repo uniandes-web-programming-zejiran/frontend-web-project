@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography, MDBIcon } from 'mdb-react-ui-kit';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
 
 function Profile(){
     return(
@@ -10,12 +10,12 @@ function Profile(){
                     <MDBCard className="w-100 h-100" style={{ borderRadius: '15px' }}>
                     <MDBCardBody className="text-center">
                         <div className="mt-3 mb-4">
-                        <MDBCardImage
-                            src="https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1"
-                            className="rounded-circle border border-3 border-#E25540"
-                            fluid
-                            style={{ width: '100px' }}
-                        />
+                            <MDBCardImage
+                                src="https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1"
+                                className="rounded-circle orange-border"
+                                fluid
+                                style={{ width: '100px', borderColor: '#E25540' }}
+                            />
                         </div>
                         <MDBTypography tag="h4">Nombre Apellido</MDBTypography>
                         <MDBCardText className="text-muted mb-4">
