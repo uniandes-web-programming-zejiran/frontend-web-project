@@ -29,24 +29,24 @@ const CustomerReviews = () => {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
-            .then(res => res.json())
-            .then(res => {
+            .then((res) => res.json())
+            .then((res) => {
                 const token = res.token;
                 const headersP = { Authorization: 'Bearer ' + token };
 
                 fetch(productURL, { headers: headersP })
-                    .then(res => res.json())
-                    .then(res => {
+                    .then((res) => res.json())
+                    .then((res) => {
                         setProducts(res);
                     });
             });
     }, []);
 
-    const handleInputChange = e => {
-        const { name, value, files } = e.target;
-        setNewReview(prevReview => ({
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewReview((prevReview) => ({
             ...prevReview,
-            [name]: files ? files[0] : value,
+            [name]: name === 'imagen' ? value.trim() : value,
         }));
     };
 
@@ -71,8 +71,8 @@ const CustomerReviews = () => {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
-            .then(res => res.json())
-            .then(res => {
+            .then((res) => res.json())
+            .then((res) => {
                 const token = res.token;
                 const headersR = {
                     Authorization: 'Bearer ' + token,
@@ -84,11 +84,11 @@ const CustomerReviews = () => {
                     body: JSON.stringify(reviewData),
                     headers: headersR,
                 })
-                    .then(res => res.json())
-                    .then(res => {
+                    .then((res) => res.json())
+                    .then((res) => {
                         const reviewId = res.id;
-                        console.log(selectedProduct)
-                        const productId = selectedProduct.id
+                        console.log(selectedProduct);
+                        const productId = selectedProduct.id;
 
                         // Associate the review with the selected product
                         const productReviewEndpoint = `http://localhost:3000/api/v1/productos/${productId}/reviews/${reviewId}`;
@@ -97,8 +97,8 @@ const CustomerReviews = () => {
                             method: 'POST',
                             headers: headersR,
                         })
-                            .then(res => res.json())
-                            .then(res => {
+                            .then((res) => res.json())
+                            .then((res) => {
                                 toast.success('Review submitted successfully');
                                 setNewReview({
                                     producto_id: '',
@@ -106,25 +106,25 @@ const CustomerReviews = () => {
                                     descripcion: '',
                                     imagen: 'https://picsum.photos/300',
                                 });
+                                window.location.reload();
                             })
-                            .catch(error => {
+                            .catch((error) => {
                                 toast.error('Failed to associate review with the product');
                             });
                     })
-                    .catch(error => {
+                    .catch((error) => {
                         toast.error('Failed to submit review');
                     });
             });
     };
 
-
-    const handleProductChange = e => {
+    const handleProductChange = (e) => {
         const selectedProductId = e.target.value;
-        const selectedProduct = products.find(product => product.id === selectedProductId);
+        const selectedProduct = products.find((product) => product.id === selectedProductId);
         setSelectedProduct(selectedProduct);
     };
 
-    const calculateAverageScore = reviews => {
+    const calculateAverageScore = (reviews) => {
         if (reviews.length === 0) return 0;
 
         const totalScore = reviews.reduce((sum, review) => sum + parseFloat(review.puntaje), 0);
@@ -133,46 +133,51 @@ const CustomerReviews = () => {
         return averageScore.toFixed(1);
     };
 
-    const renderStars = score => {
-        const starPercentage = (score / 5) * 100;
-        const starStyle = { width: `${starPercentage}%` };
-
-        return (
-            <div className="stars-outer">
-                <div className="stars-inner" style={starStyle}></div>
-            </div>
-        );
-    };
-
     return (
-        <div className='container'>
+        <div className="container">
             <ToastContainer />
-            <div>
-            <h2>Customer Reviews</h2>
-                <label>Select a product:</label>
-                <select name="producto_id" value={selectedProduct} onChange={handleProductChange}>
-                    <option value="">Select a product</option>
-                    {products.map(product => (
-                        <option key={product.id} value={product.id}>
-                            {product.nombre}
-                        </option>
-                    ))}
-                </select>
+            <div className='mb-5'>
+                <h2 className='mb-3'>Customer Reviews</h2>
+                <div className="form-group">
+                    <select
+                        className="form-control mb-3"
+                        id="product-select"
+                        name="producto_id"
+                        value={selectedProduct}
+                        onChange={handleProductChange}
+                    >
+                        <option value="">Select a product</option>
+                        {products.map((product) => (
+                            <option key={product.id} value={product.id}>
+                                {product.nombre}
+                            </option>
+                        ))}
+                    </select>
+                    {selectedProduct && (
+                        <h5><strong>Selected product:</strong> {selectedProduct.nombre}</h5>
+                    )}
+                </div>
             </div>
-            <NewReviewForm
-                products={products}
-                newReview={newReview}
-                handleInputChange={handleInputChange}
-                handleSubmitReview={handleSubmitReview}
-                handleProductChange={handleProductChange}
-            />
-            <ReviewList
-                products={products}
-                selectedProduct={selectedProduct}
-                calculateAverageScore={calculateAverageScore}
-                renderStars={renderStars}
-                handleProductChange={handleProductChange}
-            />
+
+            <div className="row">
+                <div className="col-md-4">
+                    <NewReviewForm
+                        products={products}
+                        newReview={newReview}
+                        handleInputChange={handleInputChange}
+                        handleSubmitReview={handleSubmitReview}
+                        handleProductChange={handleProductChange}
+                    />
+                </div>
+                <div className="col-md-8">
+                    <ReviewList
+                        products={products}
+                        selectedProduct={selectedProduct}
+                        calculateAverageScore={calculateAverageScore}
+                        handleProductChange={handleProductChange}
+                    />
+                </div>
+            </div>
         </div>
     );
 };

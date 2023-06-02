@@ -15,3 +15,42 @@ code {
 #events {
   margin: 0 20%;
 }
+
+.review-list {
+  padding: 20px;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.reviews-section {
+  margin-bottom: 20px;
+}
+
+.average-score {
+  margin-bottom: 10px;
+}
+
+.stars-indicator {
+  display: inline-block;
+  background-color: #75e7c4;
+  height: 20px;
+}
+
+.reviews-list {
+  margin-top: 10px;
+}
+
+.no-reviews {
+  margin-top: 20px;
+}
