@@ -8,22 +8,32 @@ import { FormattedMessage } from 'react-intl';
 function Home() {
 
     const [productos, setProductos] = useState([]);
-    useEffect(() => {
-        const URL = "http://localhost:3000/api/v1/users/login";
-        const datos = {
-            username: "adminProducto",
-            password: "adminProducto"
+    useEffect(()=>{
+
+        if(!navigator.onLine){
+            if(localStorage.getItem("listaProd") === null) {
+                setProductos([])
+            } else {
+                setProductos(JSON.parse(localStorage.getItem("listaProd")));
+            }
         }
-        fetch(URL, { method: "POST", body: JSON.stringify(datos), headers: { "Content-type": "application/json; charset=UTF-8" } }).then(res => res.json()).then(res => {
-            let token = res["token"]
-            const headersP = { 'Authorization': 'Bearer ' + token }
-            const URL2 = "http://localhost:3000/api/v1/productos";
-            fetch(URL2, { headers: headersP }).then(res => res.json()).then(res => {
-                console.log("Hola")
-                console.log(res)
-                setProductos(res);
+        else{
+
+            const URL = "http://localhost:3000/api/v1/users/login";
+            const datos = {
+                username:"adminProducto",
+                password:"adminProducto"
+            }
+            fetch(URL,{method:"POST", body: JSON.stringify(datos), headers: {"Content-type": "application/json; charset=UTF-8"}}).then(res => res.json()).then(res => {
+                let token = res["token"]
+                const headersP = { 'Authorization': 'Bearer ' + token}
+                const URL2 = "http://localhost:3000/api/v1/productos";
+                fetch(URL2, {headers: headersP}).then(res => res.json()).then(res => {
+                    setProductos(res);
+                    localStorage.setItem("listaProd", JSON.stringify(res));
+                })
             })
-        })
+        }
 
     }, []);
 
