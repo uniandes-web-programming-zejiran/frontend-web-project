@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
+import { MDBCol, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -52,6 +52,7 @@ function Home() {
                         className='border border-3 border-secondary rounded-pill'
                         fluid
                         style={{ height: '200px', borderColor: '#E25540' }}
+                        alt = "Alt"
                     />
                 </MDBCol>
                 <MDBCol>
@@ -60,6 +61,7 @@ function Home() {
                         className='border border-3 border-secondary rounded-pill'
                         fluid
                         style={{ height: '200px', borderColor: '#E25540' }}
+                        alt = "Alt"
                     />
                 </MDBCol>
                 <MDBCol></MDBCol>
@@ -77,6 +79,7 @@ function Home() {
                         src="https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png"
                         fluid
                         style={{ height: '80px' }}
+                        alt = "Alt"
                     />
                     <br></br>
                     <MDBRow>

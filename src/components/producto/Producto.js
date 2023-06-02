@@ -45,8 +45,8 @@ function Producto(){
     const renderCart = () => {
         const userLanguage = navigator.language;
         if (contCarr === false) return "";
-        else if(userLanguage == "es-ES") return "Añadido al carrito!";
-        else if(userLanguage == "en-US") return "Added to cart!";
+        else if(userLanguage === "es-ES") return "Añadido al carrito!";
+        else if(userLanguage === "en-US") return "Added to cart!";
     };
 
     const changeCart = () =>{

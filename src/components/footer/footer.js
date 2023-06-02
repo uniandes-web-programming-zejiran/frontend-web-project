@@ -1,4 +1,4 @@
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBImage, MDBTypography } from 'mdb-react-ui-kit';
+import { MDBCol, MDBRow, MDBTypography } from 'mdb-react-ui-kit';
 import { FormattedMessage } from 'react-intl';
 import footerImage from './../images/footer-image.png';
 
@@ -20,7 +20,7 @@ function Footer() {
                         src={footerImage}
                         alt='footer'
                         fluid
-                        style={{ width: '250px', borderColor: '#E25540' }}
+                        style={{ height: '200px', borderColor: '#E25540' }}
                     />
                 </MDBCol>
                 <MDBCol></MDBCol>

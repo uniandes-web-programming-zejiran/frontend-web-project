@@ -1,6 +1,5 @@
 import React from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
-import Button from "react-bootstrap/Button";
+import { MDBCol, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {FormattedMessage} from 'react-intl';
@@ -50,6 +49,7 @@ function ListaProductos(){
                             className='border border-3 border-secondary rounded-pill'
                             fluid
                             style={{ height: '200px', borderColor: '#E25540' }}
+                            alt = "Alt"
             />
             </MDBCol>
             <MDBCol>
@@ -58,6 +58,7 @@ function ListaProductos(){
                             className='border border-3 border-secondary rounded-pill'
                             fluid
                             style={{ height: '200px', width:"230px", borderColor: '#E25540' }}
+                            alt = "Alt"
             />
             </MDBCol>
             <MDBCol></MDBCol>
