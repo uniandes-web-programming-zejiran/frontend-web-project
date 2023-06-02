@@ -1,6 +1,7 @@
-.with-vertical-line .vertical-line{
+.with-vertical-line .vertical-line {
     border-right: 2px solid #ccc;
 }
+
 .container {
     max-width: 100%;
 }
@@ -8,4 +9,4 @@
 .rounded-circle.orange-border {
     border: 3px solid #E25540;
     border-radius: 50%;
-  }
+}
