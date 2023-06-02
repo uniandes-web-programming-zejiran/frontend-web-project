@@ -24,7 +24,7 @@ function Footer() {
                 <MDBCol></MDBCol>
             </MDBRow>
             <br></br>
-            <MDBTypography tag="h6" style={{ fontFamily: "system-ui" }}><FormattedMessage id="Contactanos" />: +57 3163782253 - info@EcoWeb.com</MDBTypography>
+            <MDBTypography className='my-5' tag="h6" style={{ fontFamily: "system-ui" }}><FormattedMessage id="Contactanos" />: +57 3163782253 - info@EcoWeb.com</MDBTypography>
         </div>
     )
 }

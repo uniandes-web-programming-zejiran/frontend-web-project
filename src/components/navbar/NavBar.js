@@ -10,7 +10,7 @@ import { FormattedMessage } from 'react-intl';
 function NavScrollExample() {
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="mb-5" bg="light" expand="lg">
       <Container flex-fill>
         <Navbar.Brand href="#">
           <b>ECOWEB</b>
