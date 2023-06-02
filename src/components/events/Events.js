@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const Events = () => {
     const [eventos, setEventos] = useState([]);
@@ -32,31 +33,54 @@ const Events = () => {
     }, []);
 
     return (
-        <div className='container'>
-            <h1>EcoWeb Events</h1>
+        <div className="container">
+            <h1>EcoWeb <FormattedMessage id="Eventos" /></h1>
             {eventos.length === 0 ? (
-                <p>No events available at this moment.</p>
+                <p>
+                    <FormattedMessage id="noEventsAvailable" />
+                </p>
             ) : (
                 eventos.map(evento => (
                     <div key={evento.id} className="my-5">
                         <div className="row">
                             <div className="col-md-8">
-                                <div className='px-5'>
+                                <div className="px-5">
                                     <h4>{evento.titulo}</h4>
                                     <p style={{ fontSize: '18px' }}>{evento.objetivo}</p>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div>
-                                    <img src={evento.imagen} alt={evento.titulo} style={{ width: '300px', height: 'auto' }} />
+                                    <img
+                                        src={evento.imagen}
+                                        alt={evento.titulo}
+                                        style={{ width: '300px', height: 'auto' }}
+                                    />
                                 </div>
-                                <div className='mt-3'>
-                                    <strong>Location</strong> <br /> {evento.lugar}
+                                <div className="mt-3">
+                                    <strong>
+                                        <FormattedMessage id="location" />
+                                    </strong>
+                                    <br /> {evento.lugar}
                                 </div>
-                                <div className='mt-3'>
-                                    <strong>Date and time</strong> <br />{evento.fecha}
+                                <div className="mt-3">
+                                    <strong>
+                                        <FormattedMessage id="dateAndTime" />
+                                    </strong>
+                                    <br />
+                                    {evento.fecha}
                                 </div>
-                                <button className="btn btn-primary mt-3 float-md-right rounded-pill" style={{ backgroundColor: '#75E7C4', color: 'black', padding: '10px 20px', border: '1px solid black' }}>Reserve a spot</button>
+                                <button
+                                    className="btn btn-primary mt-3 float-md-right rounded-pill"
+                                    style={{
+                                        backgroundColor: '#75E7C4',
+                                        color: 'black',
+                                        padding: '10px 20px',
+                                        border: '1px solid black'
+                                    }}
+                                >
+                                    <FormattedMessage id="reserveSpot" />
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -21,5 +21,10 @@
     "FooterSomos": "Somos un sitio web que reúne información tanto de productos locales como de tiendas de cadena con el fin de tener un catálogo eco sostenible, local, artesanal y lleno de emprendimientos.",
     "Contactanos": "Contactanos",
     "Inicio": "Inicio",
-    "Reviews": "Reseñas"
+    "Reviews": "Reseñas",
+    "position": "Posición",
+    "noEventsAvailable": "No hay eventos disponibles en este momento.",
+    "location": "Ubicación",
+    "dateAndTime": "Fecha y hora",
+    "reserveSpot": "Reservar un lugar"
 }
