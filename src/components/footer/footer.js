@@ -1,4 +1,4 @@
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBImage, MDBTypography } from 'mdb-react-ui-kit';
+import { MDBCol, MDBRow, MDBTypography } from 'mdb-react-ui-kit';
 import { FormattedMessage } from 'react-intl';
 
 function Footer() {
@@ -19,6 +19,7 @@ function Footer() {
                         src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/shopping-circle-green-512.png"
                         fluid
                         style={{ height: '150px', borderColor: '#E25540' }}
+                        alt = "Alt"
                     />
                 </MDBCol>
                 <MDBCol></MDBCol>
