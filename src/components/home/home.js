@@ -3,6 +3,7 @@ import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCar
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {FormattedMessage} from 'react-intl';
 
 function Home(){
 
@@ -28,9 +29,9 @@ function Home(){
 
     return(
         <div className='text-center'>
-            <MDBTypography tag="h1" style={{fontFamily: "system-ui"}}>¡Explora los nuevos productos!</MDBTypography>
-            <MDBTypography className='text-muted' style={{fontFamily: "system-ui"}}>Conoce los nuevos productos ecológicos proporcionados por las empresas aliadas</MDBTypography>
-            <Button style={{ backgroundColor: "#FF9591" }}><Link style={{color:"inherit", textDecoration:"none"}} to={"/productos"}>Explorar!</Link></Button>
+            <MDBTypography tag="h1" style={{fontFamily: "system-ui"}}><FormattedMessage id="HomeExplora"/></MDBTypography>
+            <MDBTypography className='text-muted' style={{fontFamily: "system-ui"}}><FormattedMessage id="HomeConoce"/></MDBTypography>
+            <Button style={{ backgroundColor: "#FF9591" }}><Link style={{color:"inherit", textDecoration:"none"}} to={"/productos"}><FormattedMessage id="Explorar"/></Link></Button>
             <br></br>
             <br></br>
             <MDBRow>
@@ -60,26 +61,93 @@ function Home(){
             <MDBRow>
             <MDBCol></MDBCol>
             <MDBCol>
-                <MDBTypography style={{fontFamily: "system-ui"}}>El espacio para cambiar un poco nuestro estilo de vida, ayudar un poco con el planeta, apoyar el talento local y presentar nuestros productos de manera digital.</MDBTypography>
-                <MDBTypography style={{fontFamily: "system-ui"}}><b>¡Conoce más!</b></MDBTypography>
+                <MDBTypography style={{fontFamily: "system-ui"}}><FormattedMessage id="HomeEspacio"/></MDBTypography>
+                <MDBTypography style={{fontFamily: "system-ui"}}><b><FormattedMessage id="ConoceMas"/></b></MDBTypography>
                 <img
                             src= "https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png"
                             fluid
                             style={{ height: '80px' }}
                 />
             <br></br>
+            <MDBRow>
+                <MDBCol>
+                <Link style={{color:"inherit", textDecoration:"none"}} to={"/productos"}>
+                <MDBCard className="w-55 h-500" style={{ borderRadius: '15px', backgroundColor: '#FFF188' }}>
+                <MDBCardBody>
+                <br></br>
+                    <MDBCardImage
+                            src= "https://cdn-icons-png.flaticon.com/512/679/679821.png"
+                            fluid
+                            style={{ height: '75px' }}
+                    />
+                <br></br>
+                <br></br>
+                <MDBCardText className="mb-2 h5 text-muted mb-0"><FormattedMessage id="Productos"/></MDBCardText>
+                </MDBCardBody>
+                </MDBCard>
+                </Link>
+                </MDBCol>
+                <MDBCol>
+                <MDBCard className="w-55 h-500" style={{ borderRadius: '15px', backgroundColor: '#FFF188' }}>
+                <MDBCardBody>
+                <br></br>
+                    <MDBCardImage
+                            src= "https://cdn-icons-png.flaticon.com/512/1809/1809216.png"
+                            fluid
+                            style={{ height: '75px' }}
+                    />
+                <br></br>
+                <br></br>
+                <MDBCardText className="mb-2 h5 text-muted mb-0">Blog</MDBCardText>
+                </MDBCardBody>
+                </MDBCard>
+                </MDBCol>
+            </MDBRow>
+            <br></br>
+            <MDBRow>
+                <MDBCol>
+                <MDBCard className="w-55 h-500" style={{ borderRadius: '15px', backgroundColor: '#FFF188' }}>
+                <MDBCardBody>
+                <br></br>
+                    <MDBCardImage
+                            src= "https://cdn-icons-png.flaticon.com/512/1591/1591041.png"
+                            fluid
+                            style={{ height: '75px' }}
+                    />
+                <br></br>
+                <br></br>
+                <MDBCardText className="mb-2 h5 text-muted mb-0"><FormattedMessage id="Negocios"/></MDBCardText>
+                </MDBCardBody>
+                </MDBCard>
+                </MDBCol>
+                <MDBCol>
+                <MDBCard className="w-55 h-500" style={{ borderRadius: '15px', backgroundColor: '#FFF188' }}>
+                <MDBCardBody>
+                <br></br>
+                    <MDBCardImage
+                            src= "https://cdn-icons-png.flaticon.com/512/6556/6556497.png"
+                            fluid
+                            style={{ height: '75px' }}
+                    />
+                <br></br>
+                <br></br>
+                <MDBCardText className="mb-2 h5 text-muted mb-0"><FormattedMessage id="Eventos"/></MDBCardText>
+                </MDBCardBody>
+                </MDBCard>
+                </MDBCol>
+            </MDBRow>
             <br></br>
             <br></br>
             </MDBCol>
             <MDBCol></MDBCol>
             </MDBRow>
             <hr></hr>
-            <MDBTypography tag="h4" style={{fontFamily: "system-ui"}}>Ofertas Semanales</MDBTypography>
+            <MDBTypography tag="h3" style={{fontFamily: "system-ui"}}><FormattedMessage id="OfertasSem"/></MDBTypography>
             <br></br>
             <div className="row" style={{justifyContent:"center", alignContent:"center"}}>
             {productos.map((prod) => (
             <MDBCol className="d-flex align-items-center justify-content-center text-center">
-            <MDBCard className="w-55 h-500" style={{ borderRadius: '15px', backgroundColor: '#FFF188' }}>
+            <MDBCard className="w-55 h-500" style={{ borderRadius: '15px', backgroundColor: '#D4FCF0' }}>
             <MDBCardBody>
             <Link style={{color:"inherit", textDecoration:"none"}} to={"/producto/" + prod.id}>
                 <MDBTypography tag="h3">{prod.nombre}</MDBTypography>
@@ -88,12 +156,12 @@ function Home(){
                     <MDBCardImage
                             src={prod.imagen}
                             fluid
-                            className='border border-3 border-danger rounded-pill'
+                            className='border border-3 border-secondary rounded-pill'
                             style={{ height: '150px', borderColor: '#E25540' }}
                     />
                     <br></br>
                     <br></br>
-                    <MDBCardText className="mb-2 h5">Precio Unitario</MDBCardText>
+                    <MDBCardText className="mb-2 h5"><FormattedMessage id="PrecioUnitario"/></MDBCardText>
                     <MDBCardText className="mb-2 h5 text-muted mb-0">{prod.precio}$</MDBCardText>
                     <br></br>
             </MDBCardBody>

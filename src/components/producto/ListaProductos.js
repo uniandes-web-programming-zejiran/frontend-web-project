@@ -3,6 +3,7 @@ import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCar
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {FormattedMessage} from 'react-intl';
 
 function ListaProductos(){
 
@@ -28,8 +29,30 @@ function ListaProductos(){
 
     return(
         <div className='text-center'>
-            <MDBTypography tag="h1" style={{fontFamily: "system-ui"}}>¡Productos Disponibles!</MDBTypography>
-            <MDBTypography className='text-muted' style={{fontFamily: "system-ui"}}>Explora los nuevos productos ecológicos proporcionados por las empresas aliadas</MDBTypography>
+            <MDBTypography tag="h1" style={{fontFamily: "system-ui"}}><FormattedMessage id="ProdDisp"/></MDBTypography>
+            <MDBTypography className='text-muted' style={{fontFamily: "system-ui"}}><FormattedMessage id="ProdExplora"/></MDBTypography>
+            <br></br>
+            <MDBRow>
+            <MDBCol></MDBCol>
+            <MDBCol>
+            <img
+                            src= "https://promoactual.com/wp-content/uploads/2018/09/Azure.png"
+                            className='border border-3 border-secondary rounded-pill'
+                            fluid
+                            style={{ height: '200px', borderColor: '#E25540' }}
+            />
+            </MDBCol>
+            <MDBCol>
+            <img
+                            src= "https://img1.picmix.com/output/stamp/normal/2/7/5/6/2076572_2ec0d.png"
+                            className='border border-3 border-secondary rounded-pill'
+                            fluid
+                            style={{ height: '200px', width:"230px", borderColor: '#E25540' }}
+            />
+            </MDBCol>
+            <MDBCol></MDBCol>
+            </MDBRow>
+            <br></br>
             <br></br>
             <div className="row" style={{justifyContent:"center", alignContent:"center"}}>
             {productos.map((prod) => (
@@ -48,7 +71,7 @@ function ListaProductos(){
                     />
                     <br></br>
                     <br></br>
-                    <MDBCardText className="mb-2 h5">Precio Unitario</MDBCardText>
+                    <MDBCardText className="mb-2 h5"><FormattedMessage id="PrecioUnitario"/></MDBCardText>
                     <MDBCardText className="mb-2 h5 text-muted mb-0">{prod.precio}$</MDBCardText>
                     <br></br>
             </MDBCardBody>

@@ -13,9 +13,16 @@ import Footer from './components/footer/footer';
 import ConfProfile from './components/profile/ConfProfile';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {IntlProvider} from 'react-intl';
+import localeEsMessages from "./locales/es";
+import localeEnMessages from "./locales/en";
+
+const userLanguage = navigator.language;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+if(userLanguage == "es-ES")
+{
 root.render(
+  <IntlProvider locale="es-ES" messages={localeEsMessages}>
   <div>
     <NavBar />
     <BrowserRouter>
@@ -27,7 +34,27 @@ root.render(
      </BrowserRouter>
     <Footer />
   </div>
+  </IntlProvider>
 );
+}
+else if(userLanguage == "en-US")
+{
+  root.render(
+    <IntlProvider locale="en-US" messages={localeEnMessages}>
+    <div>
+      <NavBar />
+      <BrowserRouter>
+         <Routes>
+         <Route path="/" element={<Home />} />
+           <Route path="/productos" element={<ListaProductos />} />
+           <Route path="/producto/:productoId" element={<Producto />} />
+         </Routes>
+       </BrowserRouter>
+      <Footer />
+    </div>
+    </IntlProvider>
+  );
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -3,6 +3,8 @@ import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCar
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {FormattedMessage} from 'react-intl';
+
 
 function Producto(){
 
@@ -30,8 +32,10 @@ function Producto(){
     const [contCarr, setContCarr] = useState(false);
 
     const renderCart = () => {
+        const userLanguage = navigator.language;
         if (contCarr === false) return "";
-        else return "Añadido al carrito!";
+        else if(userLanguage == "es-ES") return "Añadido al carrito!";
+        else if(userLanguage == "en-US") return "Added to cart!";
     };
 
     const changeCart = () =>{
@@ -40,8 +44,8 @@ function Producto(){
 
     return(
         <div className="text-center" style={{ backgroundColor: '#FFFFFF' }}>
-            <MDBTypography tag="h1" style={{fontFamily: "system-ui"}}>¡Detalles del Producto!</MDBTypography>
-            <MDBTypography className='text-muted' style={{fontFamily: "system-ui"}}>Conoce los detalles de tu producto favorito y añadelo al carrito</MDBTypography>
+            <MDBTypography tag="h1" style={{fontFamily: "system-ui"}}><FormattedMessage id="ProdDetalle"/></MDBTypography>
+            <MDBTypography className='text-muted' style={{fontFamily: "system-ui"}}><FormattedMessage id="ProdConoce"/></MDBTypography>
         <br></br>
         <MDBRow>
         <MDBCol></MDBCol>
@@ -64,12 +68,12 @@ function Producto(){
                 </MDBCol>
                 <MDBCol className="text-center">
                 <br></br>
-                    <MDBCardText className="mb-2 h5">Categoria</MDBCardText>
+                    <MDBCardText className="mb-2 h5"><FormattedMessage id="Categoria"/></MDBCardText>
                     <MDBCardText className="medium text-muted mb-0">{producto.categoria}</MDBCardText>
                     <br></br>
                     <MDBRow>
                         <MDBCol>
-                            <MDBCardText className="mb-2 h5">Precio: {producto.precio}$</MDBCardText>
+                            <MDBCardText className="mb-2 h5"><FormattedMessage id="Precio"/> {producto.precio}$</MDBCardText>
                         </MDBCol>
                         <MDBCol>
                             <MDBCardText className="mb-2 h5">Stock: {producto.stock}</MDBCardText>
@@ -77,7 +81,7 @@ function Producto(){
                     </MDBRow>
                     <br></br>
                     <br></br>
-                    <Button style={{ backgroundColor: "#FFC32E", color:"#000000" }} onClick={changeCart}>Comprar!</Button>
+                    <Button style={{ backgroundColor: "#FFC32E", color:"#000000" }} onClick={changeCart}><FormattedMessage id="Comprar"/></Button>
                     <br></br>
                     <br></br>
                     <div style={{ color: "#FF4F4F" }}><b>{renderCart()}</b></div>
