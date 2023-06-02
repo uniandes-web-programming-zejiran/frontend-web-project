@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import {FormattedMessage} from 'react-intl';
 
 
 function NavScrollExample() {
@@ -21,10 +22,10 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/">Inicio</Nav.Link>
-            <Nav.Link href="/productos">Productos</Nav.Link>
+            <Nav.Link href="/"><FormattedMessage id="Inicio"/></Nav.Link>
+            <Nav.Link href="/productos"><FormattedMessage id="Productos"/></Nav.Link>
             <Nav.Link href="#Blogs">Blogs</Nav.Link>
-            <Nav.Link href="#Eventos">Eventos</Nav.Link>
+            <Nav.Link href="#Eventos"><FormattedMessage id="Eventos"/></Nav.Link>
 
             {/* LISTADO DE OPCIONES (FUTURO)
             <NavDropdown title="Link" id="navbarScrollingDropdown">
@@ -42,7 +43,7 @@ function NavScrollExample() {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Buscar productos..."
+              placeholder="..."
               className="me-2"
               aria-label="Search"
             />
