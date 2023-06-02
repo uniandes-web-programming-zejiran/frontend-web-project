@@ -1,5 +1,6 @@
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBImage, MDBTypography } from 'mdb-react-ui-kit';
 import { FormattedMessage } from 'react-intl';
+import footerImage from './../images/footer-image.png';
 
 function Footer() {
     return (
@@ -16,9 +17,10 @@ function Footer() {
                 </MDBCol>
                 <MDBCol>
                     <img
-                        src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/shopping-circle-green-512.png"
+                        src={footerImage}
+                        alt='footer'
                         fluid
-                        style={{ height: '150px', borderColor: '#E25540' }}
+                        style={{ width: '250px', borderColor: '#E25540' }}
                     />
                 </MDBCol>
                 <MDBCol></MDBCol>

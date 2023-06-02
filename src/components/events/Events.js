@@ -54,9 +54,9 @@ const Events = () => {
                                     <strong>Location</strong> <br /> {evento.lugar}
                                 </div>
                                 <div className='mt-3'>
-                                    <strong>Date and Time</strong> <br />{evento.fecha}
+                                    <strong>Date and time</strong> <br />{evento.fecha}
                                 </div>
-                                <button className="btn btn-primary mt-3 float-md-right rounded-pill" style={{ backgroundColor: '#75E7C4', color: 'black', padding: '10px 20px', border: '1px solid black' }}>Reserve a Spot</button>
+                                <button className="btn btn-primary mt-3 float-md-right rounded-pill" style={{ backgroundColor: '#75E7C4', color: 'black', padding: '10px 20px', border: '1px solid black' }}>Reserve a spot</button>
                             </div>
                         </div>
                     </div>
