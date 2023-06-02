@@ -1,5 +1,6 @@
 import { MDBCol, MDBRow, MDBTypography } from 'mdb-react-ui-kit';
 import { FormattedMessage } from 'react-intl';
+import footerImage from './../images/footer-image.png';
 
 function Footer() {
     return (
@@ -16,16 +17,16 @@ function Footer() {
                 </MDBCol>
                 <MDBCol>
                     <img
-                        src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/shopping-circle-green-512.png"
+                        src={footerImage}
+                        alt='footer'
                         fluid
-                        style={{ height: '150px', borderColor: '#E25540' }}
-                        alt = "Alt"
+                        style={{ height: '200px', borderColor: '#E25540' }}
                     />
                 </MDBCol>
                 <MDBCol></MDBCol>
             </MDBRow>
             <br></br>
-            <MDBTypography tag="h6" style={{ fontFamily: "system-ui" }}><FormattedMessage id="Contactanos" />: +57 3163782253 - info@EcoWeb.com</MDBTypography>
+            <MDBTypography className='my-5' tag="h6" style={{ fontFamily: "system-ui" }}><FormattedMessage id="Contactanos" />: +57 3163782253 - info@EcoWeb.com</MDBTypography>
         </div>
     )
 }
