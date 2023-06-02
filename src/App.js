@@ -7,6 +7,7 @@ import NavBar from './components/navbar/NavBar';
 import Home from './components/home/home';
 import Events from './components/events/Events';
 import Footer from './components/footer/footer';
+import CustomerReviews from './components/reviews/CustomerReviews';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/productos" element={<ListaProductos />} />
           <Route path="/producto/:productoId" element={<Producto />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/reviews" element={<CustomerReviews />} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -32,7 +32,7 @@ const Events = () => {
     }, []);
 
     return (
-        <div id='events'>
+        <div className='container'>
             <h1>EcoWeb Events</h1>
             {eventos.length === 0 ? (
                 <p>No events available at this moment.</p>

@@ -30,7 +30,7 @@ function NavScrollExample() {
             </Nav.Link>
             <Nav.Link href="#Blogs">Blogs</Nav.Link>
             <Nav.Link href="/events"><FormattedMessage id="Eventos" /></Nav.Link>
-
+            <Nav.Link href="/reviews"><FormattedMessage id="Reviews" /></Nav.Link>
             {/* LISTADO DE OPCIONES (FUTURO)
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -60,7 +60,6 @@ function NavScrollExample() {
             <Button variant="outline-success" className="me-2" >
               <i className="bi bi-cart"></i>
             </Button>
-            
           </Form>
         </Navbar.Collapse>
       </Container>
