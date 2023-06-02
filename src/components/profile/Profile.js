@@ -18,7 +18,7 @@ function Profile(){
                             />
                         </div>
                         <MDBTypography tag="h4">Nombre Apellido</MDBTypography>
-                        <MDBCardText className="text-muted mb-4">
+                        <MDBCardText className="text-muted">
                         ciudad, Pais
                         </MDBCardText>
                         <MDBCardText className="text-muted mb-4">
