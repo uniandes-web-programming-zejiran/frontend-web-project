@@ -1,11 +1,12 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Producto from './components/producto/Producto';
 import ListaProductos from './components/producto/ListaProductos';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/navbar/NavBar';
 import Home from './components/home/home';
+import Events from './components/events/Events';
 import Footer from './components/footer/footer';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/productos" element={<ListaProductos />} />
           <Route path="/producto/:productoId" element={<Producto />} />
+          <Route path="/events" element={<Events />} />
         </Routes>
       </BrowserRouter>
       <Footer />

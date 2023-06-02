@@ -29,7 +29,7 @@ function NavScrollExample() {
               </Link>
             </Nav.Link>
             <Nav.Link href="#Blogs">Blogs</Nav.Link>
-            <Nav.Link href="#Eventos"><FormattedMessage id="Eventos"/></Nav.Link>
+            <Nav.Link href="/events"><FormattedMessage id="Eventos" /></Nav.Link>
 
             {/* LISTADO DE OPCIONES (FUTURO)
             <NavDropdown title="Link" id="navbarScrollingDropdown">
