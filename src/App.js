@@ -11,6 +11,8 @@ import CustomerReviews from './components/reviews/CustomerReviews';
 import Negocios from './components/negocio/negocios';
 import ListaNegocios from './components/negocio/ListaNegocios';
 import DetalleNegocio from './components/negocio/DetalleNegocio';
+import ConfProfile from './components/profile/ConfProfile';
+import PostPage from './components/post/PostPage';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/negocios" element={<Negocios />} />
           <Route path="/negocios/lista" element={<ListaNegocios />} />
           <Route path="/negocios/:id" element={<DetalleNegocio />} />
+          <Route path="/blogs" element={<PostPage />} />
+          <Route path="/profile" element={<ConfProfile />} />
         </Routes>
       </Router>
       <Footer />

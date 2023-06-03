@@ -7,8 +7,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { FormattedMessage } from 'react-intl';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function NavScrollExample() {
+
+  const navigate = useNavigate();
+
+  const goToProfilePage = () => {
+    navigate('/profile');
+  }
 
   return (
     <Navbar className="mb-5" bg="light" expand="lg">
@@ -34,7 +41,7 @@ function NavScrollExample() {
                 <FormattedMessage id="Negocios" />
               </Link>
             </Nav.Link>
-            <Nav.Link href="#Blogs">Blogs</Nav.Link>
+            <Nav.Link href="/blogs">Blogs</Nav.Link>
             <Nav.Link href="/events"><FormattedMessage id="Eventos" /></Nav.Link>
             <Nav.Link href="/reviews"><FormattedMessage id="Reviews" /></Nav.Link>
             {/* LISTADO DE OPCIONES (FUTURO)
@@ -60,7 +67,7 @@ function NavScrollExample() {
             <Button variant="outline-success" className="me-4">
               <i className="bi bi-search"></i>
             </Button>
-            <Button variant="outline-success" className="me-2">
+            <Button variant="outline-success" className="me-2" onClick={goToProfilePage}>
               <i className="bi bi-person"></i>
             </Button>
             <Button variant="outline-success" className="me-2" >
