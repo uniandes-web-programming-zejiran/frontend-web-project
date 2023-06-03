@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function NavScrollExample() {
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="mb-5" bg="light" expand="lg">
       <Container flex-fill>
         <Navbar.Brand href="#">
           <b>ECOWEB</b>
@@ -29,8 +29,8 @@ function NavScrollExample() {
               </Link>
             </Nav.Link>
             <Nav.Link href="#Blogs">Blogs</Nav.Link>
-            <Nav.Link href="#Eventos"><FormattedMessage id="Eventos"/></Nav.Link>
-
+            <Nav.Link href="/events"><FormattedMessage id="Eventos" /></Nav.Link>
+            <Nav.Link href="/reviews"><FormattedMessage id="Reviews" /></Nav.Link>
             {/* LISTADO DE OPCIONES (FUTURO)
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -47,7 +47,7 @@ function NavScrollExample() {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="..."
+              placeholder="Search products..."
               className="me-2"
               aria-label="Search"
             />
@@ -60,7 +60,6 @@ function NavScrollExample() {
             <Button variant="outline-success" className="me-2" >
               <i className="bi bi-cart"></i>
             </Button>
-            
           </Form>
         </Navbar.Collapse>
       </Container>
