@@ -44,5 +44,6 @@
     "ratingValidationError": "La puntuación debe estar entre 0 y 5.",
     "noReviews": "No hay reseñas disponibles para el producto seleccionado.",
     "lastReviews": "Últimas Reseñas",
-    "averageScore2": "Puntuación Promedio: {averageScore} / 5"
+    "averageScore2": "Puntuación Promedio: {averageScore} / 5",
+    "reservationSuccessful": "¡Reserva exitosa!"
 }

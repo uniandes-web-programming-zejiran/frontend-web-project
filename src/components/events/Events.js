@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Events = () => {
     const [eventos, setEventos] = useState([]);
@@ -43,6 +45,10 @@ const Events = () => {
         fetchData();
     }, []);
 
+    const handleReservation = () => {
+        toast.success(<FormattedMessage id="reservationSuccessful" />);
+    };
+
     return (
         <div className="container">
             <h1>EcoWeb <FormattedMessage id="Eventos" /></h1>
@@ -60,7 +66,7 @@ const Events = () => {
                                     <p style={{ fontSize: '18px' }}>{evento.objetivo}</p>
                                 </div>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-4 text-center text-md-start">
                                 <div>
                                     <img
                                         src={evento.imagen}
@@ -89,6 +95,7 @@ const Events = () => {
                                         padding: '10px 20px',
                                         border: '1px solid black'
                                     }}
+                                    onClick={() => handleReservation(evento)}
                                 >
                                     <FormattedMessage id="reserveSpot" />
                                 </button>
@@ -97,6 +104,7 @@ const Events = () => {
                     </div>
                 ))
             )}
+            <ToastContainer />
         </div>
     );
 };

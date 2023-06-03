@@ -44,5 +44,6 @@
     "ratingValidationError": "Rating should be between 0 and 5.",
     "noReviews": "No reviews available for the selected product.",
     "lastReviews": "Last Reviews",
-    "averageScore2": "Average Score: {averageScore} / 5"
+    "averageScore2": "Average Score: {averageScore} / 5",
+    "reservationSuccessful": "Reservation successful!"
 }
