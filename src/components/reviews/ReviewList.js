@@ -1,11 +1,12 @@
 import React from 'react';
 import ReviewItem from './ReviewItem';
+import { FormattedMessage } from 'react-intl';
 
 const ReviewList = ({ selectedProduct, calculateAverageScore }) => {
   const selectedReviews = selectedProduct && selectedProduct.reviews ? selectedProduct.reviews : [];
 
   if (!selectedProduct || !selectedProduct.reviews) {
-    return <div className="review-list">No reviews available for the selected product.</div>;
+    return <div className="review-list"><FormattedMessage id="noReviews" /></div>;
   }
 
   return (
@@ -18,9 +19,9 @@ const ReviewList = ({ selectedProduct, calculateAverageScore }) => {
           </div>
 
           <div className="reviews-section">
-            <h4>Last Reviews</h4>
+            <h4><FormattedMessage id="lastReviews" /></h4>
             <div className="average-score">
-              Average Score: {calculateAverageScore(selectedReviews)} / 5
+              <FormattedMessage id="averageScore2" values={{ averageScore: calculateAverageScore(selectedReviews) }} />
             </div>
             <div className="row">
               {selectedReviews.map(review => (
@@ -32,7 +33,7 @@ const ReviewList = ({ selectedProduct, calculateAverageScore }) => {
           </div>
         </div>
       ) : (
-        <div className="no-reviews">No reviews available for the selected product.</div>
+        <div className="no-reviews"><FormattedMessage id="noReviews" /></div>
       )}
     </div>
   );

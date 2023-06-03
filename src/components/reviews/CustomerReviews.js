@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NewReviewForm from './NewReviewForm';
 import ReviewList from './ReviewList';
+import { FormattedMessage } from 'react-intl';
 
 const CustomerReviews = () => {
     const loginURL = 'http://localhost:3000/api/v1/users/login';
@@ -99,7 +100,6 @@ const CustomerReviews = () => {
                         })
                             .then((res) => res.json())
                             .then((res) => {
-                                toast.success('Review submitted successfully');
                                 setNewReview({
                                     producto_id: '',
                                     puntaje: '',
@@ -107,13 +107,14 @@ const CustomerReviews = () => {
                                     imagen: 'https://picsum.photos/300',
                                 });
                                 window.location.reload();
+                                toast.success(<FormattedMessage id="reviewSubmitted" />);
                             })
                             .catch((error) => {
-                                toast.error('Failed to associate review with the product');
+                                toast.error(<FormattedMessage id="associateReviewFailed" />);
                             });
                     })
                     .catch((error) => {
-                        toast.error('Failed to submit review');
+                        toast.error(<FormattedMessage id="submitReviewFailed" />);
                     });
             });
     };
@@ -136,8 +137,8 @@ const CustomerReviews = () => {
     return (
         <div className="container">
             <ToastContainer />
-            <div className='mb-5'>
-                <h2 className='mb-3'>Customer Reviews</h2>
+            <div className="mb-5">
+                <h2 className="mb-3"><FormattedMessage id="customerReviews" /></h2>
                 <div className="form-group">
                     <select
                         className="form-control mb-3"
@@ -146,7 +147,7 @@ const CustomerReviews = () => {
                         value={selectedProduct}
                         onChange={handleProductChange}
                     >
-                        <option value="">Select a product</option>
+                        <option value=""><FormattedMessage id="selectProduct" /></option>
                         {products.map((product) => (
                             <option key={product.id} value={product.id}>
                                 {product.nombre}
@@ -154,7 +155,9 @@ const CustomerReviews = () => {
                         ))}
                     </select>
                     {selectedProduct && (
-                        <h5><strong>Selected product:</strong> {selectedProduct.nombre}</h5>
+                        <h5>
+                            <strong><FormattedMessage id="selectedProduct" /></strong> {selectedProduct.nombre}
+                        </h5>
                     )}
                 </div>
             </div>

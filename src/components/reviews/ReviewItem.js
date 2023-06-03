@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const ReviewItem = ({ review }) => {
     return (
@@ -7,7 +8,9 @@ const ReviewItem = ({ review }) => {
             <div className="card-body">
                 <h4 className="card-title">{review.titulo}</h4>
                 <p className="card-text">{review.descripcion}</p>
-                <p className="card-text">Rating: {review.puntaje}</p>
+                <p className="card-text">
+                    <FormattedMessage id="rating" />: {review.puntaje}
+                </p>
             </div>
         </div>
     );

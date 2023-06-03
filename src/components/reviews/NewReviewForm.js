@@ -1,6 +1,7 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
-const NewReviewForm = ({  newReview, handleInputChange, handleSubmitReview }) => {
+const NewReviewForm = ({ newReview, handleInputChange, handleSubmitReview }) => {
     const isFormValid = () => {
         const { titulo, puntaje, descripcion, imagen } = newReview;
         return titulo && puntaje >= 0 && puntaje <= 5 && descripcion && imagen;
@@ -10,24 +11,34 @@ const NewReviewForm = ({  newReview, handleInputChange, handleSubmitReview }) =>
         if (isFormValid()) {
             handleSubmitReview();
         } else {
-            alert('Please fill in all fields correctly before submitting the review.');
+            alert(<FormattedMessage id="formValidationError" />);
         }
     };
 
-    const ratingError = newReview.puntaje > 5 || newReview.puntaje < 0 ? 'Rating should be between 0 and 5.' : '';
+    const ratingError =
+        newReview.puntaje > 5 || newReview.puntaje < 0
+            ? <FormattedMessage id="ratingValidationError" />
+            : '';
 
     return (
         <div className="card">
             <div className="card-header bg-primary text-white">
-                <h3 className="mb-0">Write My Opinion</h3>
+                <h3 className="mb-0"><FormattedMessage id="writeOpinion" /></h3>
             </div>
             <div className="card-body">
                 <div className="form-group">
-                    <label htmlFor="title">Title:</label>
-                    <input type="text" className="form-control" id="title" name="titulo" value={newReview.titulo} onChange={handleInputChange} />
+                    <label htmlFor="title"><FormattedMessage id="title" />:</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="title"
+                        name="titulo"
+                        value={newReview.titulo}
+                        onChange={handleInputChange}
+                    />
                 </div>
                 <div className="form-group mt-2">
-                    <label htmlFor="rating">Rating:</label>
+                    <label htmlFor="rating"><FormattedMessage id="rating" />:</label>
                     <input
                         type="number"
                         className="form-control"
@@ -42,14 +53,28 @@ const NewReviewForm = ({  newReview, handleInputChange, handleSubmitReview }) =>
                     {ratingError && <p className="text-danger">{ratingError}</p>}
                 </div>
                 <div className="form-group mt-2">
-                    <label htmlFor="comments">Comments:</label>
-                    <textarea className="form-control" id="comments" name="descripcion" value={newReview.descripcion} onChange={handleInputChange} />
+                    <label htmlFor="comments"><FormattedMessage id="comments" />:</label>
+                    <textarea
+                        className="form-control"
+                        id="comments"
+                        name="descripcion"
+                        value={newReview.descripcion}
+                        onChange={handleInputChange}
+                    />
                 </div>
                 <div className="form-group mt-2">
-                    <label htmlFor="imagen">Image URL:</label>
-                    <textarea className="form-control" id="imagen" name="imagen" value={newReview.imagen} onChange={handleInputChange} />
+                    <label htmlFor="imagen"><FormattedMessage id="imageURL" />:</label>
+                    <textarea
+                        className="form-control"
+                        id="imagen"
+                        name="imagen"
+                        value={newReview.imagen}
+                        onChange={handleInputChange}
+                    />
                 </div>
-                <button className="btn btn-primary mt-3" onClick={handleReviewSubmit}>Send</button>
+                <button className="btn btn-primary mt-3" onClick={handleReviewSubmit}>
+                    <FormattedMessage id="send" />
+                </button>
             </div>
         </div>
     );
