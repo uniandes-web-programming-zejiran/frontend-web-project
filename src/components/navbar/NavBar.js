@@ -31,10 +31,7 @@ function NavScrollExample() {
             navbarScroll
           >
             <Nav.Link href="/"><FormattedMessage id="Inicio" /></Nav.Link>
-            <Nav.Link href="/productos">
-              <Link style={{ color: "inherit", textDecoration: "none" }} to={"/productos/"}>
-                <FormattedMessage id="Productos" />
-              </Link>
+            <Nav.Link href="/productos"><FormattedMessage id="Productos" />
             </Nav.Link>
             <Nav.Link href="/negocios">
               <Link style={{ color: "inherit", textDecoration: "none" }} to={"/negocios"}>
