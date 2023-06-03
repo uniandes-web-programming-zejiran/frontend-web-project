@@ -1,6 +1,8 @@
 import React from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
 import { useState, useEffect } from 'react';
+import { Form } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
 function Profile({ imagenSeleccionada, setFechaInscripcion, setIdUsuario, setImageUrl, profile }) {
 
@@ -61,7 +63,7 @@ function Profile({ imagenSeleccionada, setFechaInscripcion, setIdUsuario, setIma
                                         {numeroPublicaciones}
                                     </MDBCardText>
                                     <MDBCardText className="small text-muted mb-0">
-                                        Publicaciones
+                                        <FormattedMessage id='Posts'/>
                                     </MDBCardText>
                                 </div>
                             </MDBCardBody>

@@ -45,5 +45,17 @@
     "noReviews": "No hay reseñas disponibles para el producto seleccionado.",
     "lastReviews": "Últimas Reseñas",
     "averageScore2": "Puntuación Promedio: {averageScore} / 5",
-    "reservationSuccessful": "¡Reserva exitosa!"
+    "reservationSuccessful": "¡Reserva exitosa!",
+    "Posts": "Publicaciones",
+    "Name": "Nombre",
+    "LastName": "Apellido",
+    "ID": "Cedula",
+    "DateOfBirth": "Fecha de Nacimiento",
+    "DateDay": "DD",
+    "DateMonth": "MM",
+    "DateYear": "AAAA",
+    "Cancel": "CANCELAR",
+    "Save": "GUARDAR",
+    "ChangeProfileImage": "Cambiar imagen de perfil",
+    "ConfInfoProfile": "Confirmar información de perfil"
 }

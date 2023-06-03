@@ -45,5 +45,17 @@
     "noReviews": "No reviews available for the selected product.",
     "lastReviews": "Last Reviews",
     "averageScore2": "Average Score: {averageScore} / 5",
-    "reservationSuccessful": "Reservation successful!"
+    "reservationSuccessful": "Reservation successful!",
+    "Posts": "Posts",
+    "Name": "Name",
+    "LastName": "Last Name",
+    "ID": "ID",
+    "DateOfBirth": "Date of Birth",
+    "DateDay": "DD",
+    "DateMonth": "MM",
+    "DateYear": "YYYY",
+    "Cancel": "CANCEL",
+    "Save": "SAVE",
+    "ChangeProfileImage": "Change Profile Image",
+    "ConfInfoProfile": "Configure your profile information"
 }

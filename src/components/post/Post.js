@@ -1,6 +1,7 @@
 import React from 'react';
 import { MDBCard, MDBCardBody } from 'mdb-react-ui-kit';
 import { useState, useEffect } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 function Post({ publicacion }) {
   const { titulo, cuerpo, fechaPublicacion, imagen } = publicacion;

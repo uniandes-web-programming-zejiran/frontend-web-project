@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Profile from '../profile/Profile';
 import Post from './Post';
+import { FormattedMessage } from 'react-intl';
 
 function PostPage() {
   const [fechaInscripcion, setFechaInscripcion] = useState('');
@@ -35,7 +36,7 @@ function PostPage() {
         <Profile setFechaInscripcion={setFechaInscripcion} setIdUsuario={setIdUsuario} />
       </div>
       <div className="col-8 my-4">
-        <h5 style={{ borderBottom: "2px solid #E25540", textAlign: "right", color: "#E25540" }}>Publicaciones</h5>
+        <h5 style={{ borderBottom: "2px solid #E25540", textAlign: "right", color: "#E25540" }}><FormattedMessage id='Posts'/></h5>
         <div className="row my-4">
           {publicaciones.map(publicacion => {
             return (

@@ -5,6 +5,7 @@ import "./Profile.css";
 import Form from 'react-bootstrap/Form';
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { FormattedMessage } from 'react-intl';
 
 function ConfProfile({onGuardarClick}) {
 
@@ -114,17 +115,23 @@ function ConfProfile({onGuardarClick}) {
                         color="danger"
                         size="sm"
                         onClick={handleCambiarImagenPerfil}>
-                        Cambiar imagen de perfil
+                        <FormattedMessage id="ChangeProfileImage" />
                     </MDBBtn>
                 </div>
             </div>
             <div class="col-8 my-4">
-                <h5 style={{ borderBottom: "2px solid #E25540", textAlign: "right", color: "#E25540" }}>Configuración de perfil</h5>
+                <h5 style={{ borderBottom: "2px solid #E25540", textAlign: "right", color: "#E25540" }}>
+                    <FormattedMessage id="ConfInfoProfile" />
+                </h5>
                 <div class="row my-4">
                     <div class="col-6">
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Nombre</Form.Label>
-                            <Form.Control type="text" placeholder="nombre..."
+                            <Form.Label>
+                                <FormattedMessage id="Name" />
+                            </Form.Label>
+                            <Form.Control type="text" placeholder={
+                                <FormattedMessage id="Name" />
+                            }
                             value={nombre}
                             onChange={(e) => setNombre(e.target.value)}
                             maxLength={25}/>
@@ -132,8 +139,13 @@ function ConfProfile({onGuardarClick}) {
                     </div>
                     <div class="col-6">
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Apellido</Form.Label>
-                            <Form.Control type="text" placeholder="apellido..." 
+                            <Form.Label>
+                                <FormattedMessage id="LastName" />
+                            </Form.Label>
+                            <Form.Control type="text" placeholder=
+                            {
+                                <FormattedMessage id="LastName" />
+                            }
                             value={apellido}
                             onChange={(e) => setApellido(e.target.value)}
                             maxLength={25}/>
@@ -143,8 +155,13 @@ function ConfProfile({onGuardarClick}) {
                 <div class="row my-4">
                     <div class="col-12">
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Cedula</Form.Label>
-                            <Form.Control type="email" placeholder="cedula..." 
+                            <Form.Label>
+                                <FormattedMessage id="ID" />
+                            </Form.Label>
+                            <Form.Control type="email" placeholder=
+                            {
+                                <FormattedMessage id="ID" />
+                            } 
                             value={cedula}
                             onChange={(e) => setCedula(e.target.value)}
                             maxLength={10}/>
@@ -153,7 +170,9 @@ function ConfProfile({onGuardarClick}) {
                 </div>
                 <div class="row my-4">
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Fecha de nacimiento</Form.Label>
+                        <Form.Label>
+                            <FormattedMessage id="BirthDate" />
+                        </Form.Label>
                     </Form.Group>
                     <div class="col-4">
                         <Form.Control type="text" placeholder="DD" 
@@ -168,7 +187,7 @@ function ConfProfile({onGuardarClick}) {
                         maxLength={2}/>
                     </div>
                     <div class="col-4">
-                        <Form.Control type="text" placeholder="AAAA"
+                        <Form.Control type="text" placeholder="YYYY"
                         value={anio}
                         onChange={(e) => setAnio(e.target.value)}
                         maxLength={4}/>
@@ -177,8 +196,12 @@ function ConfProfile({onGuardarClick}) {
                 <div class="row my-4">
                     <div className="col d-flex justify-content-end">
                         <ButtonGroup aria-label="options">
-                            <Button variant="outline-danger" className="ml-2" onClick={handleCancelar}>CANCELAR</Button>
-                            <Button variant="danger" className="ml-2" onClick={hadlerUpdateGuardar}>GUARDAR</Button>
+                            <Button variant="outline-danger" className="ml-2" onClick={handleCancelar}>
+                                <FormattedMessage id="Cancel" />
+                            </Button>
+                            <Button variant="danger" className="ml-2" onClick={hadlerUpdateGuardar}>
+                                <FormattedMessage id="Save" />
+                            </Button>
                         </ButtonGroup>
                     </div>
                 </div>
