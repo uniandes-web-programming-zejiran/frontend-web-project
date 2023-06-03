@@ -17,30 +17,41 @@ const CustomerReviews = () => {
     });
 
     useEffect(() => {
-        const productURL = 'http://localhost:3000/api/v1/productos';
-        const productCredentials = {
-            username: 'adminProducto',
-            password: 'adminProducto',
-        };
+        const storedProducts = localStorage.getItem('listaProd');
+        if (storedProducts) {
+            setProducts(JSON.parse(storedProducts));
+        }
 
-        fetch(loginURL, {
-            method: 'POST',
-            body: JSON.stringify(productCredentials),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                const token = res.token;
+        const fetchData = async () => {
+            const productURL = 'http://localhost:3000/api/v1/productos';
+            const productCredentials = {
+                username: 'adminProducto',
+                password: 'adminProducto',
+            };
+
+            try {
+                const loginResponse = await fetch(loginURL, {
+                    method: 'POST',
+                    body: JSON.stringify(productCredentials),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                });
+
+                const { token } = await loginResponse.json();
                 const headersP = { Authorization: 'Bearer ' + token };
 
-                fetch(productURL, { headers: headersP })
-                    .then((res) => res.json())
-                    .then((res) => {
-                        setProducts(res);
-                    });
-            });
+                const productResponse = await fetch(productURL, { headers: headersP });
+                const productData = await productResponse.json();
+
+                setProducts(productData);
+                localStorage.setItem('listaProd', JSON.stringify(productData));
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     const handleInputChange = (e) => {
@@ -138,7 +149,9 @@ const CustomerReviews = () => {
         <div className="container">
             <ToastContainer />
             <div className="mb-5">
-                <h2 className="mb-3"><FormattedMessage id="customerReviews" /></h2>
+                <h2 className="mb-3">
+                    <FormattedMessage id="customerReviews" />
+                </h2>
                 <div className="form-group">
                     <select
                         className="form-control mb-3"
@@ -147,7 +160,9 @@ const CustomerReviews = () => {
                         value={selectedProduct}
                         onChange={handleProductChange}
                     >
-                        <option value=""><FormattedMessage id="selectProduct" /></option>
+                        <option value="">
+                            <FormattedMessage id="selectProduct" />
+                        </option>
                         {products.map((product) => (
                             <option key={product.id} value={product.id}>
                                 {product.nombre}
@@ -156,7 +171,10 @@ const CustomerReviews = () => {
                     </select>
                     {selectedProduct && (
                         <h5>
-                            <strong><FormattedMessage id="selectedProduct" /></strong> {selectedProduct.nombre}
+                            <strong>
+                                <FormattedMessage id="selectedProduct" />
+                            </strong>{' '}
+                            {selectedProduct.nombre}
                         </h5>
                     )}
                 </div>
