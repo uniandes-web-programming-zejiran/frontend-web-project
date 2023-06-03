@@ -8,8 +8,6 @@ import Home from './components/home/home';
 import Events from './components/events/Events';
 import Footer from './components/footer/footer';
 import CustomerReviews from './components/reviews/CustomerReviews';
-import ConfProfile from './components/profile/ConfProfile';
-import PostPage from './components/post/PostPage'; 
 
 function App() {
   return (
@@ -22,8 +20,6 @@ function App() {
           <Route path="/producto/:productoId" element={<Producto />} />
           <Route path="/events" element={<Events />} />
           <Route path="/reviews" element={<CustomerReviews />} />
-          <Route path="/blogs" element={<PostPage />} />
-          <Route path="/profile" element={<ConfProfile />} />
         </Routes>
       </BrowserRouter>
       <Footer />
