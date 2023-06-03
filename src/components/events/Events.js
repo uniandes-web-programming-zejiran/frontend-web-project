@@ -5,31 +5,42 @@ const Events = () => {
     const [eventos, setEventos] = useState([]);
 
     useEffect(() => {
-        const URL = 'http://localhost:3000/api/v1/users/login';
-        const datos = {
-            username: 'adminEvento',
-            password: 'adminEvento'
-        };
+        const storedEventos = localStorage.getItem('eventos');
+        if (storedEventos) {
+            setEventos(JSON.parse(storedEventos));
+        }
 
-        fetch(URL, {
-            method: 'POST',
-            body: JSON.stringify(datos),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            }
-        })
-            .then(res => res.json())
-            .then(res => {
-                const token = res.token;
+        const fetchData = async () => {
+            const URL = 'http://localhost:3000/api/v1/users/login';
+            const datos = {
+                username: 'adminEvento',
+                password: 'adminEvento'
+            };
+
+            try {
+                const loginResponse = await fetch(URL, {
+                    method: 'POST',
+                    body: JSON.stringify(datos),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    }
+                });
+
+                const { token } = await loginResponse.json();
                 const headersP = { Authorization: 'Bearer ' + token };
                 const URL2 = 'http://localhost:3000/api/v1/eventos';
 
-                fetch(URL2, { headers: headersP })
-                    .then(res => res.json())
-                    .then(res => {
-                        setEventos(res);
-                    });
-            });
+                const eventosResponse = await fetch(URL2, { headers: headersP });
+                const eventosData = await eventosResponse.json();
+
+                setEventos(eventosData);
+                localStorage.setItem('eventos', JSON.stringify(eventosData));
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     return (
