@@ -5,12 +5,16 @@ import "./Profile.css";
 import Form from 'react-bootstrap/Form';
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { FormattedMessage } from 'react-intl';
 
-function ConfProfile() {
+function ConfProfile({onGuardarClick}) {
+
+    const [guardado, setGuardado] = useState(false);
 
     //Manejar la actualización de imagen de perfil
     const [imgSelected, setImgSelected] = useState(null);
     const [isBtnClicked, setIsBtnClicked] = useState(false);
+    const [imageUrl, setImageUrl] = useState('');
 
     //Manejar la actualización de datos de perfil
     const [nombre, setNombre] = useState('');
@@ -19,6 +23,7 @@ function ConfProfile() {
     const [dia, setDia] = useState('');
     const [mes, setMes] = useState('');
     const [anio, setAnio] = useState('');
+
 
     //Acción de actualizar imagen de perfil
     const handleCambiarImagenPerfil = () => {
@@ -29,9 +34,12 @@ function ConfProfile() {
         input.onchange = (event) => {
             const file = event.target.files[0];
             setImgSelected(file);
+            const imgUrl = URL.createObjectURL(file);
+            setImageUrl(imgUrl);
         };
         input.click();
     };
+
 
     //Acción de actualizar datos de perfil en el formulario (CANCELAR)
     const handleCancelar = () => {
@@ -46,6 +54,18 @@ function ConfProfile() {
     //Guardar fecha de inscripción por actualización de datos de perfil
     const [fechaInscripcion, setFechaInscripcion] = useState('');
     const [idUsuario, setIdUsuario] = useState('');
+    
+    console.log('fehcaIns:'+fechaInscripcion);
+    console.log('id:'+idUsuario);
+    console.log('nombre:'+nombre);
+    console.log('apellido:'+apellido);
+    console.log('cedula:'+cedula);
+    console.log('dia:'+dia);
+    console.log('mes:'+mes);
+    console.log('anio:'+anio);
+    console.log('imgSelected:'+imgSelected);
+    console.log('imgURL:'+imageUrl);
+
 
     const hadlerUpdateGuardar = () => {
         const url = 'http://localhost:3000/api/v1/users/login';
@@ -66,11 +86,11 @@ function ConfProfile() {
                 ...headersU
               },
               body: JSON.stringify({
-                cedula: cedula.value,
-                nombre: nombre.value + '-' + apellido.value,
-                fechaNacimiento: anio.value + '-' + mes.value + '-' + dia.value,
+                cedula: cedula,
+                nombre: nombre+ '-' + apellido,
+                fechaNacimiento: anio + '-' + mes + '-' + dia,
                 fechaInscripcion: fechaInscripcion,
-                imagen: imgSelected
+                imagen: imageUrl 
               })
             });
           })
@@ -86,25 +106,32 @@ function ConfProfile() {
     return (
         <div class="row with-vertical-line">
             <div class="col-4 vertical-line">
-                <Profile imagenSeleccionada={imgSelected}
+                <Profile imagenSeleccionada={imageUrl}
                 setFechaInscripcion={setFechaInscripcion}
-                setIdUsuario={setIdUsuario}/>
+                setIdUsuario={setIdUsuario}
+                setImageUrl={setImageUrl}/>
                 <div class='text-center' style={{ marginTop: '20px' }}>
                     <MDBBtn
                         color="danger"
                         size="sm"
                         onClick={handleCambiarImagenPerfil}>
-                        Cambiar imagen de perfil
+                        <FormattedMessage id="ChangeProfileImage" />
                     </MDBBtn>
                 </div>
             </div>
             <div class="col-8 my-4">
-                <h5 style={{ borderBottom: "2px solid #E25540", textAlign: "right", color: "#E25540" }}>Configuración de perfil</h5>
+                <h5 style={{ borderBottom: "2px solid #E25540", textAlign: "right", color: "#E25540" }}>
+                    <FormattedMessage id="ConfInfoProfile" />
+                </h5>
                 <div class="row my-4">
                     <div class="col-6">
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Nombre</Form.Label>
-                            <Form.Control type="text" placeholder="nombre..."
+                            <Form.Label>
+                                <FormattedMessage id="Name" />
+                            </Form.Label>
+                            <Form.Control type="text" placeholder={
+                                <FormattedMessage id="Name" />
+                            }
                             value={nombre}
                             onChange={(e) => setNombre(e.target.value)}
                             maxLength={25}/>
@@ -112,8 +139,13 @@ function ConfProfile() {
                     </div>
                     <div class="col-6">
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Apellido</Form.Label>
-                            <Form.Control type="text" placeholder="apellido..." 
+                            <Form.Label>
+                                <FormattedMessage id="LastName" />
+                            </Form.Label>
+                            <Form.Control type="text" placeholder=
+                            {
+                                <FormattedMessage id="LastName" />
+                            }
                             value={apellido}
                             onChange={(e) => setApellido(e.target.value)}
                             maxLength={25}/>
@@ -123,8 +155,13 @@ function ConfProfile() {
                 <div class="row my-4">
                     <div class="col-12">
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Cedula</Form.Label>
-                            <Form.Control type="email" placeholder="cedula..." 
+                            <Form.Label>
+                                <FormattedMessage id="ID" />
+                            </Form.Label>
+                            <Form.Control type="email" placeholder=
+                            {
+                                <FormattedMessage id="ID" />
+                            } 
                             value={cedula}
                             onChange={(e) => setCedula(e.target.value)}
                             maxLength={10}/>
@@ -133,7 +170,9 @@ function ConfProfile() {
                 </div>
                 <div class="row my-4">
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Fecha de nacimiento</Form.Label>
+                        <Form.Label>
+                            <FormattedMessage id="BirthDate" />
+                        </Form.Label>
                     </Form.Group>
                     <div class="col-4">
                         <Form.Control type="text" placeholder="DD" 
@@ -148,7 +187,7 @@ function ConfProfile() {
                         maxLength={2}/>
                     </div>
                     <div class="col-4">
-                        <Form.Control type="text" placeholder="AAAA"
+                        <Form.Control type="text" placeholder="YYYY"
                         value={anio}
                         onChange={(e) => setAnio(e.target.value)}
                         maxLength={4}/>
@@ -157,8 +196,12 @@ function ConfProfile() {
                 <div class="row my-4">
                     <div className="col d-flex justify-content-end">
                         <ButtonGroup aria-label="options">
-                            <Button variant="outline-danger" className="ml-2" onClick={handleCancelar}>CANCELAR</Button>
-                            <Button variant="danger" className="ml-2" onClick={hadlerUpdateGuardar}>GUARDAR</Button>
+                            <Button variant="outline-danger" className="ml-2" onClick={handleCancelar}>
+                                <FormattedMessage id="Cancel" />
+                            </Button>
+                            <Button variant="danger" className="ml-2" onClick={hadlerUpdateGuardar}>
+                                <FormattedMessage id="Save" />
+                            </Button>
                         </ButtonGroup>
                     </div>
                 </div>

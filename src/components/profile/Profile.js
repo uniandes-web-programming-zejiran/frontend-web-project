@@ -1,11 +1,15 @@
 import React from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
 import { useState, useEffect } from 'react';
+import { Form } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
-function Profile({ imagenSeleccionada, setFechaInscripcion, setIdUsuario }) {
+function Profile({ imagenSeleccionada, setFechaInscripcion, setIdUsuario, setImageUrl, profile }) {
 
     const [usuario, setUsuario] = useState({});
-
+    const [imagenUrl, setImagenUrl] = useState('');
+    console.log('imagenUrlPROFILE:'+imagenUrl);
+    console.log('imagenSeleccionadaPROFILE:'+imagenSeleccionada);
     //Petición de la información del usuario deseado
     useEffect(() => {
         const url = 'http://localhost:3000/api/v1/users/login';
@@ -33,7 +37,9 @@ function Profile({ imagenSeleccionada, setFechaInscripcion, setIdUsuario }) {
     useEffect(() => {
         setFechaInscripcion(usuario.fechaInscripcion);
         setIdUsuario(usuario.id);
-      }, [usuario.fechaInscripcion, usuario.id, setFechaInscripcion, setIdUsuario]);
+        setImagenUrl(imagenSeleccionada);
+      }, [usuario.fechaInscripcion, usuario.id, usuario.imagen, setFechaInscripcion, setIdUsuario, imagenSeleccionada]);
+      
 
     return (
         <div className="h-80" style={{ backgroundColor: '#FFFFFF' }}>
@@ -43,7 +49,7 @@ function Profile({ imagenSeleccionada, setFechaInscripcion, setIdUsuario }) {
                         <MDBCard className="w-100 h-100" style={{ borderRadius: '15px' }}>
                             <MDBCardBody className="text-center">
                                 <MDBCardImage
-                                    src={imagenSeleccionada ? URL.createObjectURL(imagenSeleccionada) : usuario.imagen}
+                                    src={imagenSeleccionada ? imagenSeleccionada : usuario.imagen}
                                     className="rounded-circle orange-border"
                                     fluid
                                     style={{ width: '100px', height: '100px', objectFit: 'cover', borderColor: '#E25540' }}
@@ -57,7 +63,7 @@ function Profile({ imagenSeleccionada, setFechaInscripcion, setIdUsuario }) {
                                         {numeroPublicaciones}
                                     </MDBCardText>
                                     <MDBCardText className="small text-muted mb-0">
-                                        Publicaciones
+                                        <FormattedMessage id='Posts'/>
                                     </MDBCardText>
                                 </div>
                             </MDBCardBody>
