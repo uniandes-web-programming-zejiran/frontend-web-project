@@ -17,7 +17,7 @@ const CustomerReviews = () => {
     });
 
     useEffect(() => {
-        const storedProducts = localStorage.getItem('listaProd');
+        const storedProducts = localStorage.getItem('products');
         if (storedProducts) {
             setProducts(JSON.parse(storedProducts));
         }
@@ -45,7 +45,7 @@ const CustomerReviews = () => {
                 const productData = await productResponse.json();
 
                 setProducts(productData);
-                localStorage.setItem('listaProd', JSON.stringify(productData));
+                localStorage.setItem('products', JSON.stringify(productData));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
