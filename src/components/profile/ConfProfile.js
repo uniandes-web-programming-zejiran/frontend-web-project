@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
-function ConfProfile() {
+const ConfProfile = () => {
 
     //Manejar la actualización de imagen de perfil
     const [imgSelected, setImgSelected] = useState(null);

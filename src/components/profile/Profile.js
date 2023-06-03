@@ -2,7 +2,7 @@ import React from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
 import { useState, useEffect } from 'react';
 
-function Profile({ imagenSeleccionada, setFechaInscripcion, setIdUsuario }) {
+const Profile = ({ imagenSeleccionada, setFechaInscripcion, setIdUsuario }) => {
 
     const [usuario, setUsuario] = useState({});
 
