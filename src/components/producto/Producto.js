@@ -22,6 +22,7 @@ function Producto(){
             }
         }
         else{
+            setProducto(JSON.parse(localStorage.getItem("detalleProd")));
             const URL = "http://localhost:3000/api/v1/users/login";
             const datos = {
                 username:"adminProducto",
