@@ -1,7 +1,40 @@
 import React from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit';
+import { useState, useEffect } from 'react';
 
-function Profile() {
+function Profile({ imagenSeleccionada, setFechaInscripcion, setIdUsuario }) {
+
+    const [usuario, setUsuario] = useState({});
+
+    //Petición de la información del usuario deseado
+    useEffect(() => {
+        const url = 'http://localhost:3000/api/v1/users/login';
+        const datos = {
+            username: 'adminUsuario',
+            password: 'adminUsuario'
+        }
+        fetch(url, { method: 'POST', body: JSON.stringify(datos), headers: { 'Content-Type': 'application/json' } }).then(res => res.json()).then(res => {
+            let token = res['token'];
+            const headersU = { 'Authorization': 'Bearer ' + token }
+            const urlUsuarios = 'http://localhost:3000/api/v1/usuarios';
+            fetch(urlUsuarios, { headers: headersU }).then(res => res.json()).then(res => {
+                localStorage.setItem('listUsuarios', JSON.stringify(res));
+                fetch(urlUsuarios + '/' + res[0].id, { headers: headersU }).then(res => res.json()).then(res => {
+                    setUsuario(res);
+                })
+            })
+        })
+    }, []);
+
+    //Sacar el numero de publicaciones de un usuario
+    const numeroPublicaciones = usuario.publicaciones ? usuario.publicaciones.length : 0;
+
+    //Enviar información de id y fechaInscripcion al componente padre
+    useEffect(() => {
+        setFechaInscripcion(usuario.fechaInscripcion);
+        setIdUsuario(usuario.id);
+      }, [usuario.fechaInscripcion, usuario.id, setFechaInscripcion, setIdUsuario]);
+
     return (
         <div className="h-80" style={{ backgroundColor: '#FFFFFF' }}>
             <MDBContainer className="container py-5 h-100 ">
@@ -9,23 +42,20 @@ function Profile() {
                     <MDBCol className='flex-fill align-self-start'>
                         <MDBCard className="w-100 h-100" style={{ borderRadius: '15px' }}>
                             <MDBCardBody className="text-center">
-                                <div className="mt-3 mb-4">
-                                    <MDBCardImage
-                                        src="https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1"
-                                        className="rounded-circle orange-border"
-                                        fluid
-                                        style={{ width: '100px', borderColor: '#E25540' }}
-                                    />
-                                </div>
-                                <MDBTypography tag="h4">Nombre Apellido</MDBTypography>
-                                <MDBCardText className="text-muted">
-                                    ciudad, Pais
-                                </MDBCardText>
+                                <MDBCardImage
+                                    src={imagenSeleccionada ? URL.createObjectURL(imagenSeleccionada) : usuario.imagen}
+                                    className="rounded-circle orange-border"
+                                    fluid
+                                    style={{ width: '100px', height: '100px', objectFit: 'cover', borderColor: '#E25540' }}
+                                />
+                                <MDBTypography tag="h4">{usuario.nombre}</MDBTypography>
                                 <MDBCardText className="text-muted mb-4">
-                                    fecha de nacimiento
+                                    {usuario.fechaNacimiento}
                                 </MDBCardText>
                                 <div className="px-3 mx-auto">
-                                    <MDBCardText className="mb-1 h5">21</MDBCardText>
+                                    <MDBCardText className="mb-1 h5">
+                                        {numeroPublicaciones}
+                                    </MDBCardText>
                                     <MDBCardText className="small text-muted mb-0">
                                         Publicaciones
                                     </MDBCardText>
