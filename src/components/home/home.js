@@ -101,19 +101,21 @@ function Home() {
                             </Link>
                         </MDBCol>
                         <MDBCol>
-                            <MDBCard className="w-55 h-500" style={{ borderRadius: '15px', backgroundColor: '#FFF188' }}>
-                                <MDBCardBody>
-                                    <br></br>
-                                    <MDBCardImage
-                                        src="https://cdn-icons-png.flaticon.com/512/1809/1809216.png"
-                                        fluid
-                                        style={{ height: '75px' }}
-                                    />
-                                    <br></br>
-                                    <br></br>
-                                    <MDBCardText className="mb-2 h5 text-muted mb-0">Blog</MDBCardText>
-                                </MDBCardBody>
-                            </MDBCard>
+                            <Link style={{ color: "inherit", textDecoration: "none" }} to={"/negocios"}>
+                                <MDBCard className="w-55 h-500" style={{ borderRadius: '15px', backgroundColor: '#FFF188' }}>
+                                    <MDBCardBody>
+                                        <br></br>
+                                        <MDBCardImage
+                                            src="https://cdn-icons-png.flaticon.com/512/1809/1809216.png"
+                                            fluid
+                                            style={{ height: '75px' }}
+                                        />
+                                        <br></br>
+                                        <br></br>
+                                        <MDBCardText className="mb-2 h5 text-muted mb-0"><FormattedMessage id="Negocios" /></MDBCardText>
+                                    </MDBCardBody>
+                                </MDBCard>
+                            </Link>
                         </MDBCol>
                     </MDBRow>
                     <br></br>
@@ -129,7 +131,7 @@ function Home() {
                                     />
                                     <br></br>
                                     <br></br>
-                                    <MDBCardText className="mb-2 h5 text-muted mb-0"><FormattedMessage id="Negocios" /></MDBCardText>
+                                    <MDBCardText className="mb-2 h5 text-muted mb-0"><FormattedMessage id="Eventos" /></MDBCardText>
                                 </MDBCardBody>
                             </MDBCard>
                         </MDBCol>

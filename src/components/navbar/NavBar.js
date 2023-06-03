@@ -1,10 +1,11 @@
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { Link } from "react-router-dom";
 
 function NavScrollExample() {
@@ -14,7 +15,7 @@ function NavScrollExample() {
       <Container flex-fill>
         <Navbar.Brand href="#">
           <b>ECOWEB</b>
-          </Navbar.Brand>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -22,10 +23,15 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/"><FormattedMessage id="Inicio"/></Nav.Link>
+            <Nav.Link href="/"><FormattedMessage id="Inicio" /></Nav.Link>
             <Nav.Link href="/productos">
-              <Link style={{color:"inherit", textDecoration:"none"}} to={"/productos/"}>
-                <FormattedMessage id="Productos"/>
+              <Link style={{ color: "inherit", textDecoration: "none" }} to={"/productos/"}>
+                <FormattedMessage id="Productos" />
+              </Link>
+            </Nav.Link>
+            <Nav.Link href="/negocios">
+              <Link style={{ color: "inherit", textDecoration: "none" }} to={"/negocios"}>
+                <FormattedMessage id="Negocios" />
               </Link>
             </Nav.Link>
             <Nav.Link href="#Blogs">Blogs</Nav.Link>
