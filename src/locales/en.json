@@ -1,18 +1,21 @@
 {
-    "ProdDisp": "¡Available Products!",
+    "ProdDisp": "Available Products!",
+    "NegDisp": "Available Businesses!",
     "ProdExplora": "Explore the new ecological products provided by partner companies",
+    "NegExplora": "Explore the new ecological businesses provided by partner companies",
     "PrecioUnitario": "Unitary Price",
-    "ProdDetalle": "¡Product Details!",
+    "ProdDetalle": "Product Details!",
+    "NegDetalle": "Business Details!",
     "ProdConoce": "Know the details of your favorite product and add it to the cart",
     "Categoria": "Category",
     "Comprar": "Purchase!",
     "Precio": "Price:",
     "Stock": "Stock:",
-    "HomeExplora": "¡Explore the new products!",
+    "HomeExplora": "Explore the new products!",
     "HomeConoce": "Get to know the new ecological products provided by allied companies",
     "Explorar": "Explore!",
     "HomeEspacio": "The space to change our lifestyle a bit, help the planet a bit, support local talent and present our products digitally.",
-    "ConoceMas": "¡Learn more!",
+    "ConoceMas": "Learn more!",
     "Productos": "Products",
     "Negocios": "Businesses",
     "Eventos": "Events",
@@ -34,7 +37,7 @@
     "associateReviewFailed": "Failed to associate review with the product",
     "submitReviewFailed": "Failed to submit review",
     "averageScore": "Average Score",
-    "writeOpinion": "Write My Opinion",
+    "writeOpinion": "Write your opinion",
     "title": "Title",
     "rating": "Rating",
     "comments": "Comments",
@@ -45,5 +48,7 @@
     "noReviews": "No reviews available for the selected product.",
     "lastReviews": "Last Reviews",
     "averageScore2": "Average Score: {averageScore} / 5",
-    "reservationSuccessful": "Reservation successful!"
-}
+    "reservationSuccessful": "Reservation successful!",
+    "NegBttn": "Details"
+  }
+  

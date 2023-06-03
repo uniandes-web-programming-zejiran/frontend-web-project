@@ -54,3 +54,14 @@ code {
 .no-reviews {
   margin-top: 20px;
 }
+
+.image-center {
+  display: flex;
+  justify-content: center;
+}
+
+.centered-image {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}

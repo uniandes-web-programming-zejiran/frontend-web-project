@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import { Link, Outlet } from 'react-router-dom';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 function Negocios() {
   const [negocios, setNegocios] = useState([]);
+  const intl = useIntl();
 
   useEffect(() => {
     if (!navigator.onLine) {
@@ -44,25 +45,26 @@ function Negocios() {
 
   return (
     <div className="text-center">
-      <h1><FormattedMessage id="These are our allied businesses!" /></h1>
-      <p><FormattedMessage id="Powerful partnerships for growth! Explore our trusted allies, fueling our collective success. Together, we innovate, collaborate, and seize exciting prospects. Join our network of business champions and unlock boundless potential!" /></p>
+      <h1><FormattedMessage id="NegDisp" /></h1>
+      <p><FormattedMessage id="NegExplora" /></p>
       <br />
-      <div className="row" style={{ justifyContent: 'center', alignContent: 'center' }}>
+      <div className="row justify-content-center align-items-center">
         {negocios.map((negocio) => (
           <div className="col-md-4" key={negocio.id}>
             <div className="card mb-4">
-              <div className="card-body">
+              <div className="card-body text-center">
                 <h5 className="card-title">{negocio.nombre}</h5>
                 <p className="card-text">{negocio.descripcion}</p>
-                <img src={negocio.imagen} className="card-img-top" alt={negocio.nombre} />
+                <img src={negocio.imagen} className="card-img-top mx-auto" alt={negocio.nombre} />
                 <Link to={`/negocios/${negocio.id}`} className="btn btn-primary">
-                  <FormattedMessage id="VerDetalles" />
+                  <FormattedMessage id="NegBttn" />
                 </Link>
               </div>
             </div>
           </div>
         ))}
       </div>
+      <Outlet />
     </div>
   );
 }
