@@ -6,11 +6,14 @@ import Form from 'react-bootstrap/Form';
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
-function ConfProfile() {
+function ConfProfile({onGuardarClick}) {
+
+    const [guardado, setGuardado] = useState(false);
 
     //Manejar la actualización de imagen de perfil
     const [imgSelected, setImgSelected] = useState(null);
     const [isBtnClicked, setIsBtnClicked] = useState(false);
+    const [imageUrl, setImageUrl] = useState('');
 
     //Manejar la actualización de datos de perfil
     const [nombre, setNombre] = useState('');
@@ -19,6 +22,7 @@ function ConfProfile() {
     const [dia, setDia] = useState('');
     const [mes, setMes] = useState('');
     const [anio, setAnio] = useState('');
+
 
     //Acción de actualizar imagen de perfil
     const handleCambiarImagenPerfil = () => {
@@ -29,9 +33,12 @@ function ConfProfile() {
         input.onchange = (event) => {
             const file = event.target.files[0];
             setImgSelected(file);
+            const imgUrl = URL.createObjectURL(file);
+            setImageUrl(imgUrl);
         };
         input.click();
     };
+
 
     //Acción de actualizar datos de perfil en el formulario (CANCELAR)
     const handleCancelar = () => {
@@ -46,6 +53,18 @@ function ConfProfile() {
     //Guardar fecha de inscripción por actualización de datos de perfil
     const [fechaInscripcion, setFechaInscripcion] = useState('');
     const [idUsuario, setIdUsuario] = useState('');
+    
+    console.log('fehcaIns:'+fechaInscripcion);
+    console.log('id:'+idUsuario);
+    console.log('nombre:'+nombre);
+    console.log('apellido:'+apellido);
+    console.log('cedula:'+cedula);
+    console.log('dia:'+dia);
+    console.log('mes:'+mes);
+    console.log('anio:'+anio);
+    console.log('imgSelected:'+imgSelected);
+    console.log('imgURL:'+imageUrl);
+
 
     const hadlerUpdateGuardar = () => {
         const url = 'http://localhost:3000/api/v1/users/login';
@@ -66,11 +85,11 @@ function ConfProfile() {
                 ...headersU
               },
               body: JSON.stringify({
-                cedula: cedula.value,
-                nombre: nombre.value + '-' + apellido.value,
-                fechaNacimiento: anio.value + '-' + mes.value + '-' + dia.value,
+                cedula: cedula,
+                nombre: nombre+ '-' + apellido,
+                fechaNacimiento: anio + '-' + mes + '-' + dia,
                 fechaInscripcion: fechaInscripcion,
-                imagen: imgSelected
+                imagen: imageUrl 
               })
             });
           })
@@ -86,9 +105,10 @@ function ConfProfile() {
     return (
         <div class="row with-vertical-line">
             <div class="col-4 vertical-line">
-                <Profile imagenSeleccionada={imgSelected}
+                <Profile imagenSeleccionada={imageUrl}
                 setFechaInscripcion={setFechaInscripcion}
-                setIdUsuario={setIdUsuario}/>
+                setIdUsuario={setIdUsuario}
+                setImageUrl={setImageUrl}/>
                 <div class='text-center' style={{ marginTop: '20px' }}>
                     <MDBBtn
                         color="danger"

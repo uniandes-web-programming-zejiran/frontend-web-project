@@ -29,34 +29,6 @@ function PostPage() {
       });
   }, []);
 
-  useEffect(() => {  
-    const url = 'http://localhost:3000/api/v1/users/login';
-    const datos = {
-      username: 'adminUsuario',
-      password: 'adminUsuario'
-    };
-    fetch(url, { method: 'POST', body: JSON.stringify(datos), headers: { 'Content-Type': 'application/json' } })
-      .then(res => res.json())
-      .then(res => {
-        let token = res['token'];
-        const headersU = { 'Authorization': 'Bearer ' + token };
-        const urlUsuarios = 'http://localhost:3000/api/v1/usuarios';
-        fetch(urlUsuarios + '/' + idUsuario, { headers: headersU })
-          .then(res => res.json())
-          .then(res => {
-            localStorage.setItem('listUsuarios', JSON.stringify(res));
-            setUsuario(res);
-          });
-      });
-  }, [idUsuario]);
-
-  const getUsuarioInfo = (userId) => {
-    if (usuario && usuario.id === userId) {
-      return usuario;
-    }
-    return null;
-  };
-
   return (
     <div className="row with-vertical-line">
       <div className="col-4 vertical-line">
@@ -66,12 +38,10 @@ function PostPage() {
         <h5 style={{ borderBottom: "2px solid #E25540", textAlign: "right", color: "#E25540" }}>Publicaciones</h5>
         <div className="row my-4">
           {publicaciones.map(publicacion => {
-            const usuarioInfo = getUsuarioInfo(publicacion.userId);
             return (
               <Post
                 key={publicacion.id}
                 publicacion={publicacion}
-                usuario={usuarioInfo || {}} // Pasar el objeto completo del usuario como prop
               />
             );
           })}
